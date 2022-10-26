@@ -1,30 +1,25 @@
 <!-- vue入口页面 -->
 <template>
-    <div class="app">
-        <h1>hello world !,here is App.vue</h1>
-        <!-- <p><img :src="imgSrc"/></p> -->
-        <div v-for="(item,index) in count" :key="index">
-            <span>{{item}}</span>
-        </div>
+    <div class="container">
+        <router-view></router-view>
     </div>
 </template>
 <script>
-import imgSrc from '@/assets/images/R-C.png'
+
+import router from './router/index'
 
     export default{
          data(){
             return{
-                imgSrc,
-                count:10
+               
             }
-         }
+         },
+         router
     }
 </script>
 
 <style>
-
- body{
-    color:darkorange
- }
-
+    .container{
+        position: relative;
+    }
 </style>

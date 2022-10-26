@@ -10,9 +10,8 @@ module.exports = webpackMerge(webpackBase, {
   devServer: {
     open:true,
     port: 8080,
+    https: true,
     contentBase: './dist'
-
-    
   },
   devtool: 'inline-source-map', //用来追踪到错误和警告在源代码中的原始位置
   module: {

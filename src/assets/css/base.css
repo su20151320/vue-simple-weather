@@ -1,4 +1,44 @@
-html{
-    display: flex;
-    background: url(../images/flower.png) center no-repeat;
+body{
+    display:block;
+    margin: 0 ;
+    padding: 0;  
+    overflow:scroll;
+    color:#fff;
+    font-size: 16px;
+    font-family:"Microsoft YaHei";
+}
+.text-wei{
+    font-weight: 600;
+}
+ul{
+    list-style: none;
+    margin: 0;
+    padding:0;
+}
+.title-marg-top-bottom5{
+    margin:8px 0;
+}
+.box-padd15{
+    padding:15px;
+}
+.font-size12{
+    font-size:12px
+}
+.font-size14{
+    font-size: 14px;
+}
+.text-opa{
+    opacity: 0.8; /*文字变透明*/
+}
+.radius-box{
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+}
+.no-margin{
+    margin:0;
+}
+.fonticon{
+    font-size:35px;
+    color:darkorange;
+    font-weight: 600;
 }

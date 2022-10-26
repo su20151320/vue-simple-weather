@@ -5,19 +5,23 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 
 module.exports = {
-    entry: utils.resolvePath( '../src/main.js'),
+    entry: utils.resolvePath('../src/main.js'),
     output: {
-        path: utils.resolvePath( '../dist'),
+        path: utils.resolvePath('../dist'),
         filename: '[name].js'
     },
+    externals: {
+		"BMap": "BMap"
+	},
     module: {
-        rules: [
-            {//es6或更高阶的js语法转换
+        rules: [{ //es6或更高阶的js语法转换
                 test: /\.jsx?$/,
-                use:[{loader: 'babel-loader'}],
+                use: [{
+                    loader: 'babel-loader'
+                }],
                 exclude: /node_modules/
             },
-            {//vue文件处理
+            { //vue文件处理
                 test: /\.vue$/,
                 loader: 'vue-loader'
             },
@@ -32,17 +36,15 @@ module.exports = {
 
                 }]
             },
-            {//文字处理
-                test:/\.(woff2?|eot|ttf|otf|svg)$/,
-                use:[
-                    {
-                        loader:'url-loader',
-                        options:{
-                            limit:1,
-                            name:utils.staticPath('fonts/')+'[name]-[hash:4].[ext]'
-                        }
+            { //文字处理
+                test: /\.(woff2?|eot|ttf|otf|svg)$/,
+                use: [{
+                    loader: 'url-loader',
+                    options: {
+                        limit: 1,
+                        name: utils.staticPath('fonts/') + '[name]-[hash:4].[ext]'
                     }
-                ]
+                }]
             }
         ]
     },
