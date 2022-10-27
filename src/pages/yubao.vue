@@ -3,27 +3,35 @@
         <nav-bar :location="location"></nav-bar>
         <div class="content_bg">
             <div class="content_center">
-                <today-card :nowData="nowData" :updateTime="updateTime" @getData="getNowDataHandle"></today-card>
+                <today-card 
+                :nowData="nowData" 
+                :calendarData="calendarData"
+                :updateTime="updateTime"
+                :dialogData="dialogData"
+                 @getData="getNowDataHandle">
+                </today-card>
                 <div class="content-flex">
                     <div class="content-flex-left">
                         <ten-days-card :tenData="tenData"></ten-days-card>
                         <hour-card :hourData="hourData"></hour-card>
                     </div>
                     <div class="content-flex-right">
-                        <life-style-card></life-style-card>
+                        <life-style-card :lifestyleData="lifestyleData">
+                        </life-style-card>
                     </div>
                 </div>
             </div>
         </div>
+        <page-footer></page-footer>
     </div>
 </template>
 <script>
 import NavBar from '../components/common/NavBar'
+import PageFooter from '../components/common/PageFooter'
 import TodayCard from '../components/weather/TodayCard'
 import TenDaysCard from '../components/weather/TenDaysCard'
 import LifeStyleCard from '../components/weather/LifeStyleCard'
 import HourCard from '../components/weather/HourCard'
-
 
 export default {
     name: 'Yubao',
@@ -33,13 +41,16 @@ export default {
         TenDaysCard,
         LifeStyleCard,
         HourCard,
+        PageFooter,
     },
     data() {
         return {
             nowData: {},//实时天气数据
-            tenData:[], //未来10天的天气预报
-            hourData:[],//24小时内的天气预报
-            lifestyleData:{},//生活指数
+            tenData: [], //未来10天的天气预报
+            hourData: [],//24小时内的天气预报
+            lifestyleData: [],//当天生活指数
+            calendarData: {},//农历数据
+            dialogData: {},//电影台词
             location: '',
             updateTime: '',
             localCoordinates: '',//当前定位坐标
@@ -54,9 +65,9 @@ export default {
         this.getNowDataHandle();
         this.getTenDaysDataHadle();
         this.getHourDataHadle();
-
-    },
-    mounted() {
+        this.getLifeStyleHadle();
+        this.getcalendarHadle();
+        this.getdialogueHadle();
 
     },
     methods: {
@@ -69,10 +80,10 @@ export default {
                     this.$message.success('请求成功');
                     this.nowData = response.now;
                     this.updateTime = response.updateTime;//当前获取的数据最近一次更新的时间
-                    this.$root.loading[0]=true;
+                    this.$root.loading[0] = true;
                 }
             }, (e) => {
-                console.error("getNowDataHandle:"+e);
+                console.error("getNowDataHandle:" + e);
             })
         },
         //获取未来10天的天气情况
@@ -82,10 +93,10 @@ export default {
                 console.log(response)
                 if (response.code == "200") {
                     this.tenData = response.daily;
-                    this.$root.loading[1]=true;
+                    this.$root.loading[1] = true;
                 }
             }, (e) => {
-                console.error("getTenDaysDataHadle:"+e);
+                console.error("getTenDaysDataHadle:" + e);
             })
         },
         //获取每小时的天气情况
@@ -93,24 +104,53 @@ export default {
             this.getHourData(this.localCoordinates).then((res) => {
                 let response = res.data;
                 if (response.code == "200") {
-                    // let hourlyData = response.hourly;
-                    // let arr = [];
-                    // for(let i =0;i<hourlyData.length;i++){
-                    //     hourlyData[i].fxTime = hourlyData[i].fxTime.substr(11, 5);
-                    //     arr.push({
-                    //         fxTime: hourlyData[i].fxTime,
-                    //         temp: Number(hourlyData[i].temp)
-                    //     })
-                    //     i++;
-                    // }
-                    this.hourData = JSON.parse(JSON.stringify(response.hourly));
-                    console.log(this.hourData)
-                    this.$root.loading[2]=true;
+                    this.hourData = response.hourly;
+                    this.$root.loading[2] = true;
                 }
             }, (e) => {
-                console.error("getHourDataHadle:"+e);
+                console.error("getHourDataHadle:" + e);
             })
         },
+        //获取当天生活指数
+        getLifeStyleHadle() {
+            this.getLifestyle(this.localCoordinates).then((res) => {
+                let response = res.data;
+                if (response.code == "200") {
+                    let data = response.daily;
+                    if (data.length > 0) {
+                        data.sort((a, b) => {
+                            return a.type - b.type;
+                        })
+                    }
+                    this.lifestyleData = data;
+                    this.$root.loading[3] = true;
+                }
+            }, (e) => {
+                console.error("getLifeStyleHadle:" + e);
+            })
+        },
+        getcalendarHadle() {
+            this.getLunCalendar().then((res) => {
+                let response = res.data;
+                if (response.code == 200) {
+                    this.calendarData = response.newslist[0];
+                    this.$root.loading[4] = true;
+                }
+            }, (e) => {
+                console.error("getcalendarHadle:" + e);
+            })
+        },
+        getdialogueHadle() {
+            this.getDialogue().then((res) => {
+                let response = res.data;
+                if (response.code == 200) {
+                    this.dialogData = response.newslist[0];
+                    this.$root.loading[5] = true;
+                }
+            }, (e) => {
+                console.error("getcalendarHadle:" + e);
+            })
+        }
     }
 }
 </script>

@@ -25,7 +25,6 @@ import {
     GridComponent,
     ToolboxComponent,
     DatasetComponent,
-    TransformComponent
 } from 'echarts/components';
 // 标签自动布局，全局过渡动画等特性
 import { LabelLayout, UniversalTransition } from 'echarts/features';
@@ -40,8 +39,8 @@ echarts.use([
     UniversalTransition,
     CanvasRenderer,
     DatasetComponent,
-    TransformComponent
 ]);
+
 
 export default {
     name: 'HourCard',
@@ -51,7 +50,22 @@ export default {
     data() {
         return {
             activeName: 'nowdetails',
+            wLinechart: null,
             loaded: false,
+            // initData: [
+            //     { fxTime: '08:00', temp: '23', precip: '0' },
+            //     { fxTime: '09:00', temp: '24', precip: '0' },
+            //     { fxTime: '10:00', temp: '25', precip: '0' },
+            //     { fxTime: '11:00', temp: '26', precip: '0' },
+            //     { fxTime: '12:00', temp: '27', precip: '0' },
+            //     { fxTime: '13:00', temp: '27', precip: '0' },
+            //     { fxTime: '14:00', temp: '23', precip: '1' },
+            //     { fxTime: '15:00', temp: '27', precip: '1' },
+            //     { fxTime: '16:00', temp: '23', precip: '1' },
+            //     { fxTime: '17:00', temp: '23', precip: '0' },
+            //     { fxTime: '18:00', temp: '23', precip: '0' },
+            //     { fxTime: '19:00', temp: '23', precip: '0' },
+            // ],
         }
     },
     mounted() {
@@ -64,8 +78,7 @@ export default {
     methods: {
         drawLine() {
             let chartDom = document.getElementById('lineChart');
-            let wLinechart = echarts.init(chartDom);
-            // wLinechart.showLoading();
+            this.wLinechart = echarts.init(chartDom);
             let option;
             option = {
                 color: ['#ffffff'],//调色盘颜色列表，如果系列没有设置颜色，则会依次循环从该列表中取颜色作为系列颜色
@@ -73,26 +86,17 @@ export default {
                     left: 0,
                     right: '2%',
                     bottom: '3%',
+                    width: "100%",
                     containLabel: true,
                 },
-                dataset: [{
-                    //dimensions: ['cloud', 'dew', 'fxTime', 'humidity', 'icon', 'pop', 'precip', 'pressure', 'temp', 'text', 'wind360', 'windDir', 'windScale', 'windSpeed'],
-                    dimensions: ['fxTime', 'temp'],
-                    source: this.hourData,
+                dataset: {
+                    dimensions: ['fxTime', 'temp', 'precip'],
+                    source: [],//初始默认数据
                 },
-                {
-                    transform: {
-                        type: 'sort',
-                        // 按分数排序
-                        config: { dimension: 'fxTime', order: 'asc' }
-                    }
-                }
-                ],//数据集下
-                xAxis: [
+                xAxis: [ //数据集下
                     {
                         type: 'category',
-                        boundaryGap: true, //坐标两边留白策略
-                        // data: ['00:00', '02:00', '04:00', '06:00', '08:00', '10:00', '11:00', '12:00', '14:00', '16:00', '18:00'],
+                        boundaryGap: false, //坐标两边留白策略
                         axisLabel: { //坐标轴刻度标签的相关设置
                             show: true,
                             color: "rgba(255, 255, 255, 0.8)"
@@ -110,51 +114,28 @@ export default {
                         }
 
                     },
-                    // {
-                    //     type: 'category',
-                    //     boundaryGap: true, //坐标两边留白策略
-                    //     data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
-                    //     axisLabel: { //坐标轴刻度标签的相关设置
-                    //         show: true,
-                    //         color: '#fff',
-                    //     },
-                    //     axisLine: { //坐标轴轴线相关设置
-                    //         show: false,
-                    //     },
-                    //     position: 'bottom',
-                    //     offset: -30, //x轴相对默认位置的偏移
-                    //     axisTick: { //坐标轴刻度相关设置
-                    //         show: false
-                    //     }
-
-                    // }
                 ],
                 yAxis: [
                     {
                         show: false,//不显示y轴坐标
                         type: 'value',
-                        max: 40,
-                        // min:-40,
+                        max: 38,
                     },
-                    // {
-                    //     show: false,//不显示y轴坐标
-                    //     type: 'value',
-                    //     max: 40,
-                    //     // min:-40,
-                    // }
+                    {
+                        show: false,//不显示y轴坐标
+                        type: 'value',
+                        max: 30,
+                    },
                 ],
                 series: [
                     {
                         name: 'templine',
                         type: 'line',
                         encode: {
-                            // 将 "fxTime" 列映射到 X 轴。
-                            x: 'fxTime',
-                            // 将 "temp" 列映射到 Y 轴。
-                            y: 'temp'
+                            x: 'fxTime',// 将 "fxTime" 列映射到 X 轴。
+                            y: 'temp',// 将 "temp" 列映射到 Y 轴。
                         },
                         smooth: true, //是否平滑曲线显示。
-
                         lineStyle: { //折线条样式
                             width: 0.5,
                             color: "rgba(255, 255, 255, 0.5)"
@@ -162,6 +143,7 @@ export default {
                         label: { //图形上的文本标签设置
                             show: true,
                             color: '#fff',
+                            formatter: '{@temp}°'
                         },
                         symbolSize: 0,
                         showSymbol: true, //是否显示标记，其数值在曲线图上是否显示标记
@@ -179,60 +161,70 @@ export default {
                             ])
                         },
                     },
-                    // {
-                    //     name:'rainfall',
-                    //     type:'line',
-                    //     // yAxisIndex: 1, //使用的 y 轴的 index
-                    //     // data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
-                    // }
+                    {
+                        name: 'rainfall',
+                        type: 'line',
+                        yAxisIndex: 1, //使用的 y 轴的 index
+                         lineStyle: { //折线条样式
+                            width: 0.5,
+                        },
+                        encode:{
+                            y:'precip'
+                        },
+                        label: { //图形上的文本标签设置
+                            show: true,
+                            color: '#fff',
+                            offset: [15, 16.5],
+                            formatter: '{@precip}%'
+                        },
+                        symbol:"pin",
+                        symbolSize: 10,
+                        showSymbol: true,
+                        symbolOffset: [-6, -3],
+                    }
 
                 ]
             };
-            wLinechart.setOption(option);
+            this.wLinechart.setOption(option);
 
         },
         handleClick(tab, event) {
             console.log(tab);
         },
-        newDateHandle() {
-            let oldData = this.hourData;
-            let newData = [];
-            if (oldData.length > 0) {
-                // newData[0].push(1, 2, 3);
-                // for (let i = 0; i < oldData.length; i++) {
-                //     this.newData.push([]);//一维数组
-                //     let hour = oldData[i].fxTime.substr(11, 2);
-                //     for (let j = 0; j < 3; j++) {
-                //         this.newData[i].push(hour + ":00", oldData[i].temp, oldData[i].precip)
-                //     }
-                //     i++;//取间隔一小时的数据
-                // }
-            } else {
-                this.$message.error("没有获取到数据！");
 
-            }
-            // console.log(newData)
+    },
+    computed: {
 
-        },
     },
     watch: {
         hourData: function () {
-            // console.log("前data:", this.hourData);
-            //  let oldData = this.hourData;
-            // let newData = [];
-            // for (let i = 0; i < oldData.length; i++) {
-            //     newData.push({
-            //         fxTime: oldData[i].fxTime.substr(11,5),
-            //         temp: Number(oldData[i].temp)
-            //     })
-            //     i++;
-            // }
-            // this.hourData = JSON.parse(JSON.stringify(newData));
-            // console.log("后HOURdata:", this.hourData);
-
+            let d = JSON.parse(JSON.stringify(this.hourData));
+            let temp = [];
+            for (let i = 0; i < d.length; i++) {
+                temp.push({
+                    fxTime: d[i].fxTime.substr(11, 5),
+                    temp: d[i].temp,
+                    precip : parseInt(d[i].precip),
+                    icon:d[i].icon,
+                })
+                i++;
+            }
+            console.log(temp)
+            this.wLinechart.setOption({
+                dataset: {
+                    source: temp,
+                }
+            });
         }
-
     },
+    beforeDestroy() {
+        //销毁chart
+        if (!this.wLinechart) {
+            return;
+        }
+        this.wLinechart.dispose();
+        this.wLinechart = null;//
+    }
 }
 </script>
 <style scoped>

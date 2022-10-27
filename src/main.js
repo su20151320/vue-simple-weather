@@ -12,7 +12,9 @@ import {
     getCurrentCityName,
     get10DaysData,
     getHourData,
-    getLifestyle
+    getLifestyle,
+    getLunCalendar,
+    getDialogue
 
 } from '@/api/request'
 
@@ -25,11 +27,14 @@ Vue.prototype.getCurrentCityName = getCurrentCityName;
 Vue.prototype.get10DaysData = get10DaysData;
 Vue.prototype.getHourData = getHourData;
 Vue.prototype.getLifestyle = getLifestyle;
+Vue.prototype.getLunCalendar = getLunCalendar;
+Vue.prototype.getDialogue = getDialogue;
+
 Vue.config.productionTip = false
 new Vue({
     el: '#app',
     data: {
-       loading:[false,false,false,false,true],
+       loading:[false,false,false,false,false,false],
 
     },
     methods: {
