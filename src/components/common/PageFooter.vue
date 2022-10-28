@@ -1,7 +1,7 @@
 <template>
     <div class="page-footer font-size14">
         <label>气象数据来源 · 风和天气 </label>
-        <label> 日历数据来源 · 天行数据</label>
+        <label>日历数据来源 · 天行数据</label>
     </div>
 </template>
 <script>
