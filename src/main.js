@@ -14,7 +14,9 @@ import {
     getHourData,
     getLifestyle,
     getLunCalendar,
-    getDialogue
+    getDialogue,
+    getHotCityData,
+    getCitylist
 
 } from '@/api/request'
 
@@ -29,19 +31,15 @@ Vue.prototype.getHourData = getHourData;
 Vue.prototype.getLifestyle = getLifestyle;
 Vue.prototype.getLunCalendar = getLunCalendar;
 Vue.prototype.getDialogue = getDialogue;
+Vue.prototype.getHotCityData = getHotCityData;
+Vue.prototype.getCitylist = getCitylist;
+
 
 Vue.config.productionTip = false
 new Vue({
     el: '#app',
     data: {
        loading:[false,false,false,false,false,false],
-
-    },
-    methods: {
-
     },
     render: (h) => h(App),
-    created() {
-        
-    },
 })

@@ -4,7 +4,7 @@ import BMap from "BMap";
 
 const weatherUrl = 'https://devapi.qweather.com/v7/weather'; //查询天气API
 const tqzsUrl = 'https://devapi.qweather.com/v7/indices'; //查询天气指数API
-const positionUrl = 'https://geoapi.qweather.com/v2/city/lookup'; //查询地理位置url
+const positionUrl = 'https://geoapi.qweather.com/v2/city'; //查询地理位置url
 const lcalendarUrl = 'https://api.tianapi.com/lunar/index'; //查询农历API
 const dialogueUrl = 'https://api.tianapi.com/dialogue/index'; //查询电影台词API
 
@@ -25,7 +25,7 @@ export function request(config, url) {
         }),
         err => {
             //对请求错误做些什么
-            console.log(err);
+            console.log("错误：",err);
         }
     return instance(config);
 
@@ -111,14 +111,28 @@ export async function getLifestyle(pos) {
 
 //城市信息搜索
 export function getCitylist(pos) {
-    return request({
+    let res =  request({
+        url:'/lookup',
         params: {
             key: fhkey,
-            mode: 'fuzzy',
+            // mode: 'fuzzy',
             range: 'cn',
             location: pos,
         }
-    }, positionUrl)
+    }, positionUrl);
+    return res;
+}
+//热门城市信息查询
+export async function getHotCityData() {
+    let res = await request({
+        url:'/top',
+        params: {
+            key: fhkey,
+            number: 15,//返回结果的数量
+            range: 'cn',
+        }
+    }, positionUrl);
+    return res;
 }
 
 //中国农历信息查询

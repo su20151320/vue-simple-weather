@@ -1,14 +1,10 @@
 <template>
     <div class="container_weather">
-        <nav-bar :location="location"></nav-bar>
+        <nav-bar :location="location" @get-weather="getWeather"></nav-bar>
         <div class="content_bg">
             <div class="content_center">
-                <today-card 
-                :nowData="nowData" 
-                :calendarData="calendarData"
-                :updateTime="updateTime"
-                :dialogData="dialogData"
-                 @getData="getNowDataHandle">
+                <today-card :nowData="nowData" :calendarData="calendarData" :updateTime="updateTime"
+                    :dialogData="dialogData" @getData="getNowDataHandle">
                 </today-card>
                 <div class="content-flex">
                     <div class="content-flex-left">
@@ -150,7 +146,19 @@ export default {
             }, (e) => {
                 console.error("getcalendarHadle:" + e);
             })
-        }
+        },
+        getWeather(localCoordinates, localCity) {
+            // let loading=JSON.parse(JSON.stringify(this.$root.loading))
+            // loading.map(()=>false);
+            // this.$root.loading = loading;
+          
+            this.localCoordinates = localCoordinates;
+            this.location = localCity;
+            this.getNowDataHandle();
+            this.getTenDaysDataHadle();
+            this.getHourDataHadle();
+            this.getLifeStyleHadle();
+        },
     }
 }
 </script>

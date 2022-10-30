@@ -209,7 +209,6 @@ export default {
                 })
                 i++;
             }
-            console.log(temp)
             this.wLinechart.setOption({
                 dataset: {
                     source: temp,
