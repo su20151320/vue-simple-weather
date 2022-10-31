@@ -22,10 +22,6 @@ export default {
     props: {
         lifestyleData: Array,
     },
-    data() {
-        return {
-        }
-    },
     filters: {
         typeTrans: function (type) {
             let res = '';

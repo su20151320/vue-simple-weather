@@ -71,7 +71,6 @@ export default {
         getNowDataHandle() {
             this.getNowData(this.localCoordinates).then((res) => {
                 let response = res.data;
-                console.log(response)
                 if (response.code == "200") {
                     this.$message.success('请求成功');
                     this.nowData = response.now;
@@ -86,7 +85,6 @@ export default {
         getTenDaysDataHadle() {
             this.get10DaysData(this.localCoordinates).then((res) => {
                 let response = res.data;
-                console.log(response)
                 if (response.code == "200") {
                     this.tenData = response.daily;
                     this.$root.loading[1] = true;

@@ -115,7 +115,6 @@ export function getCitylist(pos) {
         url:'/lookup',
         params: {
             key: fhkey,
-            // mode: 'fuzzy',
             range: 'cn',
             location: pos,
         }

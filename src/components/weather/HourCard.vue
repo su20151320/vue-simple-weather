@@ -9,7 +9,6 @@
                 <el-tab-pane label="24小时预报" name="daydetails">
                     24小时预报,待更新。。。
                     <!-- <span>{{ loading[2] }}</span> -->
-
                 </el-tab-pane>
             </el-tabs>
         </div>
@@ -70,9 +69,6 @@ export default {
     },
     mounted() {
         this.drawLine();
-
-    },
-    beforeUpdate() {
 
     },
     methods: {
@@ -191,9 +187,6 @@ export default {
         handleClick(tab, event) {
             console.log(tab);
         },
-
-    },
-    computed: {
 
     },
     watch: {
