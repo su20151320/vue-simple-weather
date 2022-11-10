@@ -151,7 +151,7 @@ export async function getLunCalendar() {
 
 //经典台词查询
 export async function getDialogue() {
-    let res =  request({
+    let res = await request({
         params: {
             key: txkey,
         }
