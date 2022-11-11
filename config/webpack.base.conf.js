@@ -5,10 +5,10 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 
 module.exports = {
-    entry: utils.resolvePath('../src/main.js'),
+    entry: utils.resolvePath('../src/main.js'),//入口主文件
     output: {
-        path: utils.resolvePath('../dist'),
-        filename: '[name].js'
+        path: utils.resolvePath('../dist'), //出口路径
+        filename: utils.staticPath('js/')+'[name].[hash:4].js' //出口主文件
     },
     externals: {
 		"BMap": "BMap"
