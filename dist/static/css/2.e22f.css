@@ -1,0 +1,380 @@
+
+.nav-bar[data-v-31703f51] {
+    width: 1200px;
+    margin: 0 auto;
+    height: 70px;
+    padding: 0 20px;
+    color:darkorange;
+}
+.nav-icon[data-v-31703f51] {
+    float: left;
+    position: relative;
+    top: 8px
+}
+.nav-icon .logo[data-v-31703f51] {
+    width: 162px;
+    height: 55px;
+}
+.nav-location[data-v-31703f51] {
+    text-align: right;
+    line-height: 70px;
+}
+.nav-location .cur-location[data-v-31703f51],
+.nav-seach[data-v-31703f51] {
+    display: inline-block;
+    position: relative;
+}
+.nav-location a[data-v-31703f51] {
+    font-size: 12px;
+    color: #A9A9A9;
+    margin: 0 10px;
+}
+.pos-input[data-v-31703f51] input {
+    height: 35px;
+    line-height: 35px;
+    width: 360px;
+    border: 1px solid #808080;
+    -webkit-box-shadow: 0 5px 5px rgba(100, 100, 100, 0.2);
+            box-shadow: 0 5px 5px rgba(100, 100, 100, 0.2)
+}
+
+/* 城市搜索下拉框 */
+.pos-select-box[data-v-31703f51] {
+    position: absolute;
+    top: 55px;
+    width: 340px;
+    /* height: 400px; */
+    text-align: left;
+    border: 1px solid #A9A9A9;
+    -webkit-box-shadow: 0 5px 5px rgba(100, 100, 100, 0.5);
+            box-shadow: 0 5px 5px rgba(100, 100, 100, 0.5);
+    background-color: #fff;
+    border-radius: 2px;
+    padding: 10px;
+    line-height: 28px;
+    z-index: 1000;
+}
+.onlyread[data-v-31703f51] {
+    color: #606266;
+}
+.sel-title[data-v-31703f51] {
+    font-size: 10px;
+}
+.hotcity-option-box .ul-flex[data-v-31703f51] {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -ms-flex-line-pack: distribute;
+        align-content: space-around;
+    color: #000;
+}
+.ul-flex li[data-v-31703f51] {
+    margin: 0 4px;
+    width: 60px;
+}
+li[data-v-31703f51]:hover,.city-box[data-v-31703f51]:hover {
+    color: darkorange;
+    cursor: pointer;
+    background-color: #F0F0F0;
+}
+
+
+.page-footer[data-v-3e764917] {
+    width: 100%;
+    /* height: 80px; */
+    background-color: rgb(31, 96, 161, 0.9);
+    color: #D0D0D0;
+}
+.page-footer label[data-v-3e764917] {
+    display: block;
+    padding-top: 9px;
+    text-align: center;
+}
+
+
+.content-nowcard[data-v-bbdd16ec] {
+    position: relative;
+    top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    height: 250px;
+    width: 100%;
+}
+.content-nowcard .left[data-v-bbdd16ec] {
+    width: 60%;
+    display: inline-block;
+}
+.text_time .icon[data-v-bbdd16ec]:hover {
+    cursor: pointer;
+}
+.temp[data-v-bbdd16ec] {
+    height: 90px;
+    display: table;
+    margin: 15px 0;
+}
+.temp .fonticon[data-v-bbdd16ec] {
+    font-size: 70px;
+}
+.temp .temp-left[data-v-bbdd16ec] {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 14px;
+    font-size: 50px;
+}
+.temp-left sup[data-v-bbdd16ec] {
+    font-size: 24px;
+}
+.temp img[data-v-bbdd16ec] {
+    width: 80px;
+    height: 80px;
+}
+.temp-right[data-v-bbdd16ec] {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 50px;
+}
+.temp-right .temp-mark[data-v-bbdd16ec] {
+    font-size: 18px;
+}
+.temp-other-box[data-v-bbdd16ec] {
+    margin-top: 15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+}
+.content-nowcard .right[data-v-bbdd16ec] {
+    float: right;
+    width: 40%;
+}
+.right .calendar-box[data-v-bbdd16ec] {
+    margin-left: 20px;
+    padding-left: 40px;
+}
+.calendar-box .text-date[data-v-bbdd16ec] {
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.text-luner-calendar .day[data-v-bbdd16ec] {
+    font-size: 60px;
+    color: darkorange;
+    padding: 20px;
+}
+.text-luner-calendar-right[data-v-bbdd16ec] {
+    display: inline-block;
+}
+.text-mar[data-v-bbdd16ec] {
+    margin: 10px 0;
+}
+.green-text[data-v-bbdd16ec] {
+    color: #32CD32;
+    font-weight: 600;
+}
+.red-text[data-v-bbdd16ec] {
+    color: #FF6347;
+    font-weight: 600;
+}
+.dialogvue-text[data-v-bbdd16ec] {
+    height: 40px;
+    margin-top: 10px;
+    display: -webkit-box;
+    /* 必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 。*/
+    -webkit-box-orient: vertical;
+    /* 必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。*/
+    text-overflow: ellipsis;
+    /* 可以用来多行文本的情况下，用省略号“…”隐藏超出范围的文本 。*/
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+.text-tip[data-v-bbdd16ec]{
+    color:#000;
+}
+
+
+.content-tenday-card[data-v-46a07f1a] {
+    position: relative;
+    top: 10px;
+    /*因为上一个box已经用相对定位往下移10，所以这里也往下移，以便能够让元素不占对方的高度*/
+    margin-bottom: 10px;
+    height: 137px;
+}
+.content-tenday-card ul[data-v-46a07f1a] {
+    width: 900px;
+    height: 100px;
+    position: absolute;
+    left: 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.content-tenday-card ul li[data-v-46a07f1a] {
+    display: inline-block;
+    position: relative;
+    left: 0;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    width: 158px;
+    height: 100px;
+    margin-right: 6px;
+    -webkit-transition: left 1s;
+    transition: left 1s;
+}
+ul li[data-v-46a07f1a]:hover {
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.2);
+}
+li.active[data-v-46a07f1a] {
+    width: 240px !important;
+}
+.active .flex-card[data-v-46a07f1a] {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1 !important;
+        -ms-flex: 1 auto 1 !important;
+            flex: 1 auto 1 !important;
+    -webkit-box-pack: justify !important;
+        -ms-flex-pack: justify !important;
+            justify-content: space-between !important;
+}
+.card-center[data-v-46a07f1a] {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+.card-center .fonticon[data-v-46a07f1a] {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* .flex-card img {
+    width: 40px;
+    height: 40px;
+} */
+.today-card .label-date[data-v-46a07f1a] {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+.text-line[data-v-46a07f1a] {
+    height: 20px;
+    line-height: 20px;
+}
+.icon[data-v-46a07f1a] {
+    position: absolute;
+    top: 64px;
+    z-index: 100;
+}
+.pre-icon[data-v-46a07f1a] {
+    left: -16px;
+    display: none;
+}
+.icon img[data-v-46a07f1a] {
+    width: 30px;
+    height: 30px;
+    opacity: 0.6;
+}
+.icon img[data-v-46a07f1a]:hover {
+    cursor: pointer;
+}
+.next-icon[data-v-46a07f1a] {
+    right: -14px;
+}
+
+
+.content-life-style-card[data-v-d4915a52] {
+    position: relative;
+    top: 10px;
+    width: 292px;
+    height: 464px;
+    margin-left: 8px;
+    margin-top: 8px;
+}
+.content-life-style-card .card-outside-box[data-v-d4915a52] {
+    height: 100%;
+}
+.card-outside-box ul[data-v-d4915a52]{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap:wrap;
+        flex-wrap:wrap;
+}
+.card-outside-box ul li[data-v-d4915a52]{
+    display: inline-block;
+    height: 123px;
+    width:110px;
+    margin-left:6px;
+    margin-bottom: 6px;
+    padding:12px;
+    cursor: pointer;
+    color:#000;
+    background:#fff;
+    border-radius: 4px;
+    text-align: center;
+}
+li[data-v-d4915a52]:hover{
+    background: rgba(255, 255, 255, 0.9);
+}
+img[data-v-d4915a52] {
+    width: 60px;
+    height: 60px;
+}
+.card-outside-box .card-text[data-v-d4915a52] {
+    display: block;
+    margin:10px 0;
+}
+
+
+.content-hour-card[data-v-6b6e87b4] {
+    position: relative;
+    width: 100%;
+}
+.content-hour-card .radius-box[data-v-6b6e87b4] {
+    height: auto;
+}
+.radius-box[data-v-6b6e87b4] .el-tabs__item {
+    font-size: 12px !important;
+    color: #fff !important;
+}
+.radius-box[data-v-6b6e87b4] .el-tabs--top .el-tabs__item.is-top:nth-child(2) {
+    padding-left: 20px !important;
+}
+.radius-box[data-v-6b6e87b4] .el-tabs__item.is-active {
+    color: #fff !important;
+    font-weight: 600;
+}
+
+
+.container_weather[data-v-ecafafe8] {
+    position: relative;
+}
+.content_bg[data-v-ecafafe8] {
+    background-color: rgb(31, 96, 161);
+}
+.content_center[data-v-ecafafe8] {
+    width: 1200px;
+    margin: 0 auto;
+    height: 800px;
+}
+.content-flex[data-v-ecafafe8] {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    /* height: 483px; */
+}
+.content-flex .content-flex-left[data-v-ecafafe8] {
+    width: 75%;
+}
+.content-flex .content-flex-right[data-v-ecafafe8] {
+    width: 25%;
+}
+
