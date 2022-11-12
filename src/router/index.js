@@ -5,7 +5,6 @@ import Router from 'vue-router'
 Vue.use(Router);
 
 export default new Router({ //创建router实例
-    mode:'hash',
     routes: [
         {
             path:'/login',
