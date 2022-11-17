@@ -14,3 +14,6 @@ npm install 或 cnpm i(推荐)
 npm run dev 
 
 访问: http://localhost:8080
+
+### 效果演示
+预览地址：https://da-su.gitee.io/vue-simple-weather
