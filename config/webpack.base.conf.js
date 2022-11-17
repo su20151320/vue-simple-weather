@@ -9,7 +9,7 @@ module.exports = {
     output: {
         path: utils.resolvePath('../dist'), //出口路径
         filename: utils.staticPath('js/') + '[name].[hash:4].js', //出口主文件
-        publicPath: 'https://da-su.gitee.io/vue-simple-weather/dist/',
+        publicPath: './',
     },
 
     externals: {
