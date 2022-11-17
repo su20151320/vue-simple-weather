@@ -5,19 +5,20 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
     entry: utils.resolvePath('../src/main.js'), //入口主文件
+
     output: {
         path: utils.resolvePath('../dist'), //出口路径
-        filename: utils.staticPath('js/') + 't[name]js.[hash:4].js', //出口主文件
-        // publicPath:'./',
+        filename: utils.staticPath('js/') + '[name].[hash:4].js', //出口主文件
+        publicPath: 'https://da-su.gitee.io/vue-simple-weather/',
     },
+
     externals: {
         "BMap": "BMap"
     },
     module: {
         rules: [{ //es6或更高阶的js语法转换
                 test: /\.jsx?$/,
-                use: [
-                 {
+                use: [{
                     loader: 'babel-loader',
                 }],
                 exclude: /node_modules/
