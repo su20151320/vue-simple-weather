@@ -8,7 +8,7 @@ module.exports = {
 
     output: {
         path: utils.resolvePath('../dist'), //出口路径
-        filename: utils.staticPath('js/') + '[name].[hash:4].js', //出口主文件
+        filename: utils.staticPath('js/') + 'weather-[name].[hash:4].js', //出口主文件
         publicPath: './',
     },
 
@@ -33,7 +33,7 @@ module.exports = {
                     loader: 'url-loader',
                     options: {
                         limit: 1024 * 10, //单位: b
-                        name: utils.staticPath('images/') + '[name]-[hash:4].[ext]'
+                        name: utils.staticPath('images/') + 'weather-[name]-[hash:4].[ext]'
                     }
 
                 }]
