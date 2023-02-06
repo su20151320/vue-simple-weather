@@ -1,35 +1,34 @@
 
-.nav-bar[data-v-31703f51] {
+.nav-bar[data-v-2e0b2794] {
     width: 1200px;
     margin: 0 auto;
     height: 70px;
-    padding: 0 20px;
     color:darkorange;
 }
-.nav-icon[data-v-31703f51] {
+.nav-icon[data-v-2e0b2794] {
     float: left;
     position: relative;
     top: 8px
 }
-.nav-icon .logo[data-v-31703f51] {
+.nav-icon .logo[data-v-2e0b2794] {
     width: 162px;
     height: 55px;
 }
-.nav-location[data-v-31703f51] {
+.nav-location[data-v-2e0b2794] {
     text-align: right;
     line-height: 70px;
 }
-.nav-location .cur-location[data-v-31703f51],
-.nav-seach[data-v-31703f51] {
+.nav-location .cur-location[data-v-2e0b2794],
+.nav-seach[data-v-2e0b2794] {
     display: inline-block;
     position: relative;
 }
-.nav-location a[data-v-31703f51] {
+.nav-location a[data-v-2e0b2794] {
     font-size: 12px;
     color: #A9A9A9;
     margin: 0 10px;
 }
-.pos-input[data-v-31703f51] input {
+.pos-input[data-v-2e0b2794] input {
     height: 35px;
     line-height: 35px;
     width: 360px;
@@ -39,7 +38,7 @@
 }
 
 /* 城市搜索下拉框 */
-.pos-select-box[data-v-31703f51] {
+.pos-select-box[data-v-2e0b2794] {
     position: absolute;
     top: 55px;
     width: 340px;
@@ -54,13 +53,13 @@
     line-height: 28px;
     z-index: 1000;
 }
-.onlyread[data-v-31703f51] {
+.onlyread[data-v-2e0b2794] {
     color: #606266;
 }
-.sel-title[data-v-31703f51] {
+.sel-title[data-v-2e0b2794] {
     font-size: 10px;
 }
-.hotcity-option-box .ul-flex[data-v-31703f51] {
+.hotcity-option-box .ul-flex[data-v-2e0b2794] {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -70,14 +69,27 @@
         align-content: space-around;
     color: #000;
 }
-.ul-flex li[data-v-31703f51] {
+.ul-flex li[data-v-2e0b2794] {
     margin: 0 4px;
     width: 60px;
 }
-li[data-v-31703f51]:hover,.city-box[data-v-31703f51]:hover {
+li[data-v-2e0b2794]:hover,.city-box[data-v-2e0b2794]:hover {
     color: darkorange;
     cursor: pointer;
     background-color: #F0F0F0;
+}
+.userlogin[data-v-2e0b2794]{
+    display: inline-block;
+    width:35px;
+    height:35px;
+    line-height:35px;
+    vertical-align:middle;
+    text-align: center;
+    border:1px solid darkorange;
+    border-radius: 50%;
+}
+.userlogin[data-v-2e0b2794]:hover{
+    cursor:pointer;
 }
 
 
@@ -94,52 +106,51 @@ li[data-v-31703f51]:hover,.city-box[data-v-31703f51]:hover {
 }
 
 
-.content-nowcard[data-v-bbdd16ec] {
+.content-nowcard[data-v-f26e1c82] {
     position: relative;
     top: 10px;
     padding: 10px;
     border-radius: 5px;
     background: rgba(255, 255, 255, 0.1);
     height: 250px;
-    width: 100%;
 }
-.content-nowcard .left[data-v-bbdd16ec] {
+.content-nowcard .left[data-v-f26e1c82] {
     width: 60%;
     display: inline-block;
 }
-.text_time .icon[data-v-bbdd16ec]:hover {
+.text_time .icon[data-v-f26e1c82]:hover {
     cursor: pointer;
 }
-.temp[data-v-bbdd16ec] {
+.temp[data-v-f26e1c82] {
     height: 90px;
     display: table;
     margin: 15px 0;
 }
-.temp .fonticon[data-v-bbdd16ec] {
+.temp .fonticon[data-v-f26e1c82] {
     font-size: 70px;
 }
-.temp .temp-left[data-v-bbdd16ec] {
+.temp .temp-left[data-v-f26e1c82] {
     display: table-cell;
     vertical-align: middle;
     padding-left: 14px;
     font-size: 50px;
 }
-.temp-left sup[data-v-bbdd16ec] {
+.temp-left sup[data-v-f26e1c82] {
     font-size: 24px;
 }
-.temp img[data-v-bbdd16ec] {
+.temp img[data-v-f26e1c82] {
     width: 80px;
     height: 80px;
 }
-.temp-right[data-v-bbdd16ec] {
+.temp-right[data-v-f26e1c82] {
     display: table-cell;
     vertical-align: middle;
     padding-left: 50px;
 }
-.temp-right .temp-mark[data-v-bbdd16ec] {
+.temp-right .temp-mark[data-v-f26e1c82] {
     font-size: 18px;
 }
-.temp-other-box[data-v-bbdd16ec] {
+.temp-other-box[data-v-f26e1c82] {
     margin-top: 15px;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -148,40 +159,40 @@ li[data-v-31703f51]:hover,.city-box[data-v-31703f51]:hover {
         -ms-flex-pack: justify;
             justify-content: space-between;
 }
-.content-nowcard .right[data-v-bbdd16ec] {
+.content-nowcard .right[data-v-f26e1c82] {
     float: right;
     width: 40%;
 }
-.right .calendar-box[data-v-bbdd16ec] {
+.right .calendar-box[data-v-f26e1c82] {
     margin-left: 20px;
     padding-left: 40px;
 }
-.calendar-box .text-date[data-v-bbdd16ec] {
+.calendar-box .text-date[data-v-f26e1c82] {
     font-size: 20px;
     text-align: center;
     padding-bottom: 8px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
-.text-luner-calendar .day[data-v-bbdd16ec] {
+.text-luner-calendar .day[data-v-f26e1c82] {
     font-size: 60px;
     color: darkorange;
     padding: 20px;
 }
-.text-luner-calendar-right[data-v-bbdd16ec] {
+.text-luner-calendar-right[data-v-f26e1c82] {
     display: inline-block;
 }
-.text-mar[data-v-bbdd16ec] {
+.text-mar[data-v-f26e1c82] {
     margin: 10px 0;
 }
-.green-text[data-v-bbdd16ec] {
+.green-text[data-v-f26e1c82] {
     color: #32CD32;
     font-weight: 600;
 }
-.red-text[data-v-bbdd16ec] {
+.red-text[data-v-f26e1c82] {
     color: #FF6347;
     font-weight: 600;
 }
-.dialogvue-text[data-v-bbdd16ec] {
+.dialogvue-text[data-v-f26e1c82] {
     height: 40px;
     margin-top: 10px;
     display: -webkit-box;
@@ -193,7 +204,7 @@ li[data-v-31703f51]:hover,.city-box[data-v-31703f51]:hover {
     -webkit-line-clamp: 2;
     overflow: hidden;
 }
-.text-tip[data-v-bbdd16ec]{
+.text-tip[data-v-f26e1c82]{
     color:#000;
 }
 
@@ -354,27 +365,29 @@ img[data-v-d4915a52] {
 }
 
 
-.container_weather[data-v-ecafafe8] {
+.container_weather[data-v-046cd12e] {
     position: relative;
 }
-.content_bg[data-v-ecafafe8] {
+.content_bg[data-v-046cd12e] {
     background-color: rgb(31, 96, 161);
+    width:100%;
 }
-.content_center[data-v-ecafafe8] {
+.content_center[data-v-046cd12e] {
     width: 1200px;
     margin: 0 auto;
     height: 800px;
+    background-color: rgb(31, 96, 161);
 }
-.content-flex[data-v-ecafafe8] {
+.content-flex[data-v-046cd12e] {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     /* height: 483px; */
 }
-.content-flex .content-flex-left[data-v-ecafafe8] {
+.content-flex .content-flex-left[data-v-046cd12e] {
     width: 75%;
 }
-.content-flex .content-flex-right[data-v-ecafafe8] {
+.content-flex .content-flex-right[data-v-046cd12e] {
     width: 25%;
 }
 

@@ -6,6 +6,7 @@ body{
     color:#fff;
     font-size: 16px;
     font-family:"Microsoft YaHei";
+    min-width: 1200px;
 }
 .text-wei{
     font-weight: 600;

@@ -131,7 +131,6 @@ export default {
     border-radius: 5px;
     background: rgba(255, 255, 255, 0.1);
     height: 250px;
-    width: 100%;
 }
 
 .content-nowcard .left {

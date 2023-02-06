@@ -40,6 +40,10 @@
                     输入城市不存在
                 </div>
             </div>
+            <div class="userlogin" @click="toLogin">
+                <i class="el-icon-user-solid"></i>
+            </div>
+            
         </div>
     </div>
 
@@ -98,7 +102,10 @@ export default {
             this.hotcityisShow = false;
             this.cityList = [];
             this.setTimeId = null;
-        }
+        },
+        toLogin(){
+            this.$router.push("login");
+        },
     },
     watch: {
         city: function () {
@@ -155,7 +162,6 @@ export default {
     width: 1200px;
     margin: 0 auto;
     height: 70px;
-    padding: 0 20px;
     color:darkorange;
     
 }
@@ -235,5 +241,19 @@ li:hover,.city-box:hover {
     color: darkorange;
     cursor: pointer;
     background-color: #F0F0F0;
+}
+.userlogin{
+    display: inline-block;
+    width:35px;
+    height:35px;
+    line-height:35px;
+    vertical-align:middle;
+    text-align: center;
+    border:1px solid darkorange;
+    border-radius: 50%;
+    
+}
+.userlogin:hover{
+    cursor:pointer;
 }
 </style>

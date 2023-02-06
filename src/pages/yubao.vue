@@ -167,12 +167,14 @@ export default {
 
 .content_bg {
     background-color: rgb(31, 96, 161);
+    width:100%;
 }
 
 .content_center {
     width: 1200px;
     margin: 0 auto;
     height: 800px;
+    background-color: rgb(31, 96, 161);
 }
 
 .content-flex {
