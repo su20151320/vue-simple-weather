@@ -19,7 +19,4 @@ import router from './router/index'
 </script>
 
 <style>
-    .container{
-        position: relative;
-    }
 </style>

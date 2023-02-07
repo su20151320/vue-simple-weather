@@ -8,11 +8,11 @@ export default new Router({ //创建router实例
     mode:'hash',
     routes: [
         {
-            path:'/login',
+            path:'/',
             component:() => import('@/pages/login'),
         },
         {
-            path:'/', //首页
+            path:'/yubao', //首页
             component: () => import('@/pages/yubao'),
         },
         // {
