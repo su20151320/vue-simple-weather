@@ -32,8 +32,9 @@
                                             <span>向右拖动滑块填充拼图</span>
                                         </div>
                                         <!-- 可拖动的盒子 -->
-                                        <div class="drag-child" ref="dragBox" @mousemove="dragMouseMove"
-                                            @mousedown="drangMouseDown" @mouseup="dragMouseUp"></div>
+                                        <div class="drag-child" ref="dragBox"
+                                            v-on="{ mouseover: dragMouseOver, mousedown: dragMouseDown,mouseup:drangMouseUp }">
+                                        </div>
                                     </div>
                                 </div>
                                 <el-button type="primary" style="width:100%"
@@ -97,14 +98,17 @@ export default {
             this.loginActive = false;
             this.registerActive = true;
         },
-        dragMouseMove() {
+        dragMouseOver(){
             this.checkVisible = true;
         },
-        drangMouseDown(event) {
+        dragMouseDown() {
+            document.addEventListener("mousemove", this.dragMouseMove);
+        },
+        dragMouseMove(event) {
             console.log(event);
-
             // 获取当前x的坐标
             const { layerX } = event;
+            //超出该盒子范围即return
             if (layerX < 0 || layerX > 260.2) {
                 return;
             }
@@ -119,13 +123,32 @@ export default {
 
         },
         drangMouseUp(event) {
+            document.removeEventListener("mousemove", this.dragMouseMove)
             const { layerX } = event;
             if (layerX < 248 || layerX > 255) { //不符合校验区域
-                
+                console.log("鼠标松开", this.$refs.dragBox.style);
                 //修改可移动盒子的x坐标
+                // this.$refs.dragBox.style.webkitAnimation = "move 0.5s ease-in-out";
                 this.$refs.dragBox.style.animation = "move 0.5s ease-in-out";
                 //修改被校验区域坐标
+                // this.$refs.checkBox.style.webkitAnimation = "move 0.5s ease-in-out";
                 this.$refs.checkBox.style.animation = "move 0.5s ease-in-out";
+
+                const animationEnd = () => {
+                    //修改可移动盒子的x坐标
+                    this.$refs.dragBox.style.transform = `translateX(${0})`;
+                    //修改被校验区域坐标
+                    this.$refs.checkBox.style.transform = `translateX(${0})`;
+                    // 清除动画属性
+                    this.$refs.dragBox.style.animation = '';
+                    this.$refs.checkBox.style.animation = '';
+
+                    document.removeEventListener("webkitAnimationEnd", animationEnd)
+                    document.removeEventListener("transitionend", animationEnd)
+                }
+                document.addEventListener("webkitAnimationEnd", animationEnd)
+                document.addEventListener("transitionend", animationEnd)
+
             }
         },
 
@@ -237,7 +260,7 @@ export default {
     height: 160px;
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    /*伸展背景图像完全填充内容区域 */
+    /* 伸展背景图像完全填充内容区域 */
     background-image: url("../assets/images/login_checkout.jpg");
     position: absolute;
     top: -170px;
@@ -316,12 +339,28 @@ export default {
     height: 100%;
     margin: 0 auto;
     color: #a8a8a8;
+    user-select: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+
 }
 
 /* 通过关键字 keyframes 增加一个动画,名为move 原理是:将一套 CSS 样式逐渐变化为另一套样式。 */
+
+@-webkit-keyframes move
+
+/* Safari and Chrome */
+    {
+
+    to {
+        transform: translateX(0);
+    }
+}
+
 @keyframes move {
     to {
-        transform: translate(0);
+        transform: translateX(0);
     }
 }
 </style>
