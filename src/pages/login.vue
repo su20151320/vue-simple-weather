@@ -84,7 +84,7 @@ export default {
                             type: 'success',
                             message: '用户名是：' + this.loginForm.username + '密码是：' + this.loginForm.password
                         });
-                        this.$router.push("yubao");
+                        this.$router.replace("/");
                     } else {
                         this.$message({
                             type: 'error',
