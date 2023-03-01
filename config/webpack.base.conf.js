@@ -9,7 +9,7 @@ module.exports = {
     output: {
         path: utils.resolvePath('../dist'), //出口路径
         filename: utils.staticPath('js/') + 'weather-[name].[hash:4].js', //出口主文件
-        publicPath: './',  //发布到正式才启用
+        // publicPath: './',  //发布到正式才启用
     },
 
     externals: {

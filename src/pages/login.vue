@@ -23,22 +23,24 @@
                             <el-form-item>
                                 <div class="check-body">
                                     <!-- 图形校验区 -->
-                                    <div class="check" v-if="checkVisible">
-                                        <div class="check-child" ref="checkBox"></div>
-                                    </div>
+                                    <transition name="slide-fade" :duration="{ enter: 500, leave: 500 }">
+                                        <div class="check" v-if="checkVisible">
+                                            <div class="check-child" ref="checkBox"></div>
+                                        </div>
+                                    </transition>
                                     <!-- 拖动条 -->
                                     <div class="drag">
                                         <div class="drag-tips">
                                             <span>向右拖动滑块填充拼图</span>
                                         </div>
                                         <!-- 可拖动的盒子 -->
-                                        <div class="drag-child" ref="dragBox"
-                                            v-on="{ mouseover: dragMouseOver, mousedown: dragMouseDown,mouseup:drangMouseUp }">
+                                        <div :class="['drag-child', isSuccess ? 'drag-child-success' : '']" ref="dragBox"
+                                            v-on="{ mouseover: dragMouseOver, mousedown: dragMouseDown, mouseup: drangMouseUp }">
+                                            <i class="el-icon-check checked-icon" v-show="isSuccess"></i>
                                         </div>
                                     </div>
                                 </div>
-                                <el-button type="primary" style="width:100%"
-                                    @click="submitForm('loginForm')">登录</el-button>
+                                <el-button type="primary" style="width:100%" @click="submitForm('loginForm')">登录</el-button>
                             </el-form-item>
                         </el-form>
                     </section>
@@ -67,6 +69,7 @@ export default {
             },
             showLogin: false,
             checkVisible: false,
+            isSuccess: false,
         }
     },
     mounted() {
@@ -74,20 +77,28 @@ export default {
     },
     methods: {
         async submitForm(formName) {
-            // this.$refs[formName].validate(async (valid) => {
-            //     if (valid) {
-            //         // const res = await login({ user_name: this.loginForm.username, password: this.loginForm.password });
-            //         this.$message({
-            //             type: 'success',
-            //             message: '用户名是：' + this.loginForm.username + '密码是：' + this.loginForm.password
-            //         });
-            //     } else {
-            //         this.$message({
-            //             type: 'error',
-            //             message: '请输入正确的用户名密码'
-            //         });
-            //     }
-            // });
+            this.$refs[formName].validate(async (valid) => {
+                if (valid) {
+                    if (this.isSuccess) {
+                        this.$message({
+                            type: 'success',
+                            message: '用户名是：' + this.loginForm.username + '密码是：' + this.loginForm.password
+                        });
+                        this.$router.push("yubao");
+                    } else {
+                        this.$message({
+                            type: 'error',
+                            message: '请完成校验'
+                        });
+                    }
+
+                } else {
+                    this.$message({
+                        type: 'error',
+                        message: '请输入正确的用户名密码'
+                    });
+                }
+            });
         },
         loginTitleClick() {
             this.loginActive = true;
@@ -98,35 +109,36 @@ export default {
             this.loginActive = false;
             this.registerActive = true;
         },
-        dragMouseOver(){
+        dragMouseOver() {
             this.checkVisible = true;
         },
         dragMouseDown() {
             document.addEventListener("mousemove", this.dragMouseMove);
         },
         dragMouseMove(event) {
-            console.log(event);
+            console.log(event)
             // 获取当前x的坐标
             const { layerX } = event;
             //超出该盒子范围即return
             if (layerX < 0 || layerX > 260.2) {
+                this.isSuccess = false;
                 return;
             }
             //修改可移动盒子的x坐标
             this.$refs.dragBox.style.transform = `translateX(${layerX}px)`;
             //修改被校验区域坐标
             this.$refs.checkBox.style.transform = `translateX(${layerX}px)`;
-            if (layerX >= 248 && layerX <= 255) {
-                console.log("通过校验")
+            //校验成功
+            if (layerX >= 236 && layerX <= 241) {
+                this.isSuccess = true;
+                this.checkVisible = false;
+                document.removeEventListener("mousemove", this.dragMouseMove)
             }
-
-
         },
         drangMouseUp(event) {
             document.removeEventListener("mousemove", this.dragMouseMove)
             const { layerX } = event;
-            if (layerX < 248 || layerX > 255) { //不符合校验区域
-                console.log("鼠标松开", this.$refs.dragBox.style);
+            if (layerX < 236 || layerX > 241) { //不符合校验区域
                 //修改可移动盒子的x坐标
                 // this.$refs.dragBox.style.webkitAnimation = "move 0.5s ease-in-out";
                 this.$refs.dragBox.style.animation = "move 0.5s ease-in-out";
@@ -142,6 +154,9 @@ export default {
                     // 清除动画属性
                     this.$refs.dragBox.style.animation = '';
                     this.$refs.checkBox.style.animation = '';
+                    //隐藏图片及成功的标志
+                    this.checkVisible = false;
+                    this.isSuccess = false;
 
                     document.removeEventListener("webkitAnimationEnd", animationEnd)
                     document.removeEventListener("transitionend", animationEnd)
@@ -249,6 +264,19 @@ export default {
     }
 }
 
+.slide-fade-enter-active {
+    transition: all 0.5s ease-in-out;
+}
+
+.slide-fade-leave-active {
+    transition: all 0.5s ease-in-out;
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to {
+    opacity: 0;
+}
+
 @media screen and (min-width:768px) {
     .check {
         width: 310.2px;
@@ -329,6 +357,15 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
+}
+
+.drag-child-success {
+    background-color: green;
+}
+
+.checked-icon {
+    font-weight: 600;
+    font-size: 20px;
 }
 
 .drag-tips {
