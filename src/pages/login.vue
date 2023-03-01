@@ -309,7 +309,6 @@ export default {
 /* 当设备屏幕的最大可见区域宽度 小于等于 767px时 */
 @media screen and (max-width:767px) {
     .check-child {
-
         background-size: 327px 160px;
     }
 
